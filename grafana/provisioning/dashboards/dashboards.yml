@@ -1,0 +1,11 @@
+apiVersion: 1
+
+providers:
+  - name: 'MLStream MLOps Dashboards'
+    orgId: 1
+    folder: 'MLOps & Drift Observability'
+    type: file
+    disableDeletion: false
+    editable: true
+    options:
+      path: /etc/grafana/provisioning/dashboards
