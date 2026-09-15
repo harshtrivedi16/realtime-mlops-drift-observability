@@ -29,7 +29,7 @@
 ### 🏗️ Enterprise System Architecture
 ```mermaid
 graph TD
-    UI["Next.js 14 Dashboard<br>(Control Center & UI)"] <-->|HTTP / REST| API["FastAPI Gateway<br>(Port 8080)"]
+    UI["Next.js 14 Dashboard<br>(Control Center & UI)"] ---|HTTP / REST| API["FastAPI Gateway<br>(Port 8080)"]
     API -->|Inference Logs| K_PROD["Kafka Producer"]
     
     subgraph broker [Event Streaming Broker]
@@ -49,11 +49,11 @@ graph TD
     KAFKA -->|Consume| K_CONS
     
     DRIFT -->|Update Metrics| PROM_REG["Prometheus Registry"]
-    PROM_REG -->|Scrape :9090| PROM["Prometheus TSDB"]
+    PROM_REG -->|Scrape 9090| PROM["Prometheus TSDB"]
     
     PROM -->|Query| GRAFANA["Grafana MLOps Dashboards<br>(Port 3001)"]
     
-    DRIFT -.->|Threshold Breach (p < 0.05)| RETRAIN["Automated Retrain Webhook"]
+    DRIFT -.->|Threshold Breach| RETRAIN["Automated Retrain Webhook"]
 ```
 
 ---
