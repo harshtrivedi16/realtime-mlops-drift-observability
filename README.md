@@ -32,7 +32,7 @@ graph TD
     UI["Next.js 14 Dashboard<br>(Control Center & UI)"] <-->|HTTP / REST| API["FastAPI Gateway<br>(Port 8080)"]
     API -->|Inference Logs| K_PROD["Kafka Producer"]
     
-    subgraph Event Streaming Broker
+    subgraph broker [Event Streaming Broker]
     KAFKA["Apache Kafka (Port 9092)"]
     ZOOKEEPER["Zookeeper (Port 2181)"]
     ZOOKEEPER --- KAFKA
@@ -40,7 +40,7 @@ graph TD
     
     K_PROD -->|Publish| KAFKA
     
-    subgraph Background Daemon (Async)
+    subgraph daemon [Background Daemon]
     K_CONS["Kafka Consumer Thread"]
     DRIFT["Statistical Drift Engine<br>(KS-Test, Wasserstein)"]
     K_CONS -->|Calculate| DRIFT
